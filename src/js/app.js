@@ -33,14 +33,26 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${variables.name ? variables.name : ""} ${
+    variables.lastname ? variables.lastname : ""
+  }</h1>
+          <h2>${variables.role ? variables.role : "En Paro"}</h2>
+          <h3>${variables.city ? variables.city : ""} ${
+    variables.country ? variables.country : ""
+  }</h3>
+          <ul class= ${variables.socialMediaPosition}>
+            <li><a target="_blank" href="https://twitter.com/${
+              variables.twitter
+            }"><i class="fab fa-twitter"></i></a></li>
+            <li><a target="_blank" href="https://github.com/${
+              variables.github
+            }"><i class="fab fa-github"></i></a></li>
+            <li><a target="_blank" href="www.linkedin.com/in/${
+              variables.linkedin
+            }"><i class="fab fa-linkedin"></i></a></li>
+            <li><a target="_blank" href="https://instagram.com/${
+              variables.instagram
+            }"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -70,6 +82,7 @@ window.onload = function() {
     country: null,
     city: null
   };
+
   render(window.variables); //render the card for the first time
 
   document.querySelectorAll(".picker").forEach(function(elm) {
